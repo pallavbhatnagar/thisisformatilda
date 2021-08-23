@@ -1029,7 +1029,8 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
           .mob_view { 
-            font-size: 3em !important; }
+            font-size: 3.2em !important; 
+            line-height: 1 !important;}
           
           .body_color_mob { 
             background-color: black !important;
