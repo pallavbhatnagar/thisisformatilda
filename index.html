@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>For Matilda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900"> 
+    <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet'>
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+	  <link rel="icon" href="https://image.flaticon.com/icons/png/512/2089/2089792.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+    
+  </head>
+  <body class="body_color_mob" >
+
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <script>
+        $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
+
+
+  
+
+    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);background-position: 50% 0 !important;" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div  class="w3-animate-opacity mail_footer" > <a href="http://www.instagram.com/pallav_supertramp" target="_blank"><small class="mob_view_mail_color" style="line-height: 0 !important;">✉</small></a></div>
+      
+
+      <div class="container">
+
+        <div class="row align-items-center justify-content-center">
+          
+
+          <div class="col-12 col-md-10 col-lg-10 col-xl-10" data-aos="fade-up" data-aos-delay="600">
+            <h4 class="text-white mb-2 display-4 mob_view" style="font-family:'poppins';font-size: 5em;font-weight: 700;">This is for Matilda</h4>
+            <div class="text-white"><span class="text-white-opacity-05" style="font-size: 13px; letter-spacing: 1px;font-family: 'poppins';font-weight: 300 !important;background-color: black;line-height: 1.1 !important;">Behind the hum and routine of my daily living, there was a wild girl longing for something, I could not easily put into words. She felt like impulsive adventures, like watching the sun rise over unfamiliar mountains, or coffee in a street café, set to the background music of a foreign language,the smell of the ocean, with dizzying seagulls whirling in a cobalt sky; exotic foods and strange faces, strange as in like a city where no one knew you. A secrets whispered at midnight, a road trips without a map, but at the end of it most of all, she was my Matilda and this here is for her.</span></div>
+                        
+            <p id="button-to-be-shown-when-offline">
+              <a class="btn btn-primary-custom btn-sm py-3 px-4 small" style="margin-top:2em;font-family: 'poppins';color: black !important;
+    font-weight: 600 !important;">
+                 Tune In @22:30 HRs, <br class="hide_in_desktop show_mobile"> Saturdays, IST
+              </a>
+
+            </p>
+            
+
+
+            <p id="button-to-be-shown-when-online" class="hidden">
+              <a class="btn btn-primary-custom-live noHover btn-sm py-3 px-4 small" style="margin-top:2em;font-family: 'poppins';color: white;
+    font-weight: 600 !important;">ON AIR</a>
+            </p>
+
+            <div id="player-to-be-show-when-online" class="player hidden">
+              <audio id="player2" preload="none" controls style="max-width: 100%">
+                <!-- <source src="http://helloworld1234.ddns.net:8000/stream" type="audio/mpeg"> -->
+                  <source src="https://radio.pallavbhatnagar.in/stream" type="audio/mpeg">
+
+              </audio>
+              
+              
+            </div>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+      for (var i = 0; i < total; i++) {
+        new MediaElementPlayer(mediaElements[i], {
+          pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+          shimScriptAccess: 'always',
+          success: function () {
+            var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+            for (var j = 0; j < targetTotal; j++) {
+              target[j].style.visibility = 'visible';
+            }
+          }
+        });
+      }
+    });
+  </script>
+  <script src="js/main.js"></script>
+  <script>
+    var PLAYER_VISIBLE     = false;
+    var PLAYER_HAS_STOPPED = false;
+
+    function timeout(ms, promise) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          reject(new Error("timeout"))
+        }, ms)
+        promise.then(resolve, reject)
+      })
+    }
+
+    function songInfoApiCall(songInfoPollInterval) {
+      timeout(5000, fetch('https://radio.pallavbhatnagar.in/status-json.xsl'))
+      // timeout(5000, fetch('http://helloworld1234.ddns.net:8000/status-json.xsl'))
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(body) {
+        if(PLAYER_HAS_STOPPED) {
+          // Refresh the page
+          PLAYER_HAS_STOPPED = false;
+          window.location.reload();
+          return;
+        }
+        if(document.querySelector('span.mejs__broadcast') && body && window.matchMedia("(min-width: 501px)").matches) {
+          let listeners = body.icestats.source.listeners;
+          let songName = null;
+		if(body.icestats.source.title) {
+  		songName = body.icestats.source.title;
+			} else {
+  		songName = "Live Broadcast";
+			}
+          document.querySelector('span.mejs__broadcast').innerHTML = ` ♪ \xa0\xa0 ${songName}   \xa0\xa0 <input type="image" src="images/button.png" style="width:6px;height:7px;"> \xa0\xa0 Active listeners\xa0:\xa0 ${listeners}`;
+        }
+
+        if(PLAYER_VISIBLE === false) {
+          PLAYER_VISIBLE = true;
+          document.getElementById('button-to-be-shown-when-offline').classList.toggle('hidden');
+          document.getElementById('button-to-be-shown-when-online').classList.toggle('hidden');
+          document.getElementById('player-to-be-show-when-online').classList.toggle('hidden');
+        }
+      })
+      .catch(function(err) {
+        console.error(err);
+        if(PLAYER_VISIBLE === true) {
+          PLAYER_VISIBLE     = false;
+          PLAYER_HAS_STOPPED = true;
+          document.getElementById('player2').pause();
+          document.getElementById('button-to-be-shown-when-offline').classList.toggle('hidden');
+          document.getElementById('button-to-be-shown-when-online').classList.toggle('hidden');
+          document.getElementById('player-to-be-show-when-online').classList.toggle('hidden');
+        }
+      });
+    }
+
+    $(document).ready(function() {
+      songInfoApiCall();
+      let songInfoPollInterval = setInterval(function() {
+        songInfoApiCall(songInfoPollInterval);
+      }, 5000);
+    });
+  </script>
+  </body>
+</html>
