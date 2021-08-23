@@ -1044,6 +1044,9 @@ a:hover {
           .line_height_mob {
           line-height: 1.1 !important;
         }
+        .btn.btn-sm {
+          font-size: 0.8rem !important;
+          }
         }
         
 
